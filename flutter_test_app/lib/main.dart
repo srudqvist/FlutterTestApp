@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -55,6 +56,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  bool switchValue = false;
+
   void _incrementCounter() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
@@ -101,15 +104,45 @@ class _MyHomePageState extends State<MyHomePage> {
           // wireframe for each widget.
           children: <Widget>[
             Image.network("https://picsum.photos/200/200"),
-            const TextField(
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Username',
+            const SizedBox(
+              height: 20.0,
+            ),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: TextField(
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Username',
+                ),
               ),
             ),
-            const Text(
-              'You have pushed the button this many times:',
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text("Notifications"),
+                Switch(
+                    value: switchValue,
+                    onChanged: (newSwitchValue) {
+                      setState(() {
+                        switchValue = newSwitchValue;
+                      });
+                    }),
+              ],
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text("data"),
+                CupertinoSwitch(
+                    value: switchValue,
+                    onChanged: (newSwitchValue) {
+                      setState(() {
+                        switchValue = newSwitchValue;
+                      });
+                    }),
+              ],
+            ),
+            ElevatedButton(onPressed: () {}, child: const Text("Save"))
           ],
         ),
       ),
