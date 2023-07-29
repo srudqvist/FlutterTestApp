@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_test_app/pages/first.dart';
 
 void main() {
   runApp(const MyApp());
@@ -142,7 +143,14 @@ class _MyHomePageState extends State<MyHomePage> {
                     }),
               ],
             ),
-            ElevatedButton(onPressed: () {}, child: const Text("Save"))
+            ElevatedButton(onPressed: () {}, child: const Text("Save")),
+            TextButton(
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const FirstPage()));
+                },
+                child: const Text("First Page")),
+            TextButton(onPressed: () {}, child: const Text("Second Page")),
           ],
         ),
       ),
