@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test_app/pages/first.dart';
+import 'package:flutter_test_app/pages/second.dart';
 
 void main() {
   runApp(const MyApp());
@@ -150,7 +151,14 @@ class _MyHomePageState extends State<MyHomePage> {
                       builder: (context) => const FirstPage()));
                 },
                 child: const Text("First Page")),
-            TextButton(onPressed: () {}, child: const Text("Second Page")),
+            TextButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const SecondPage()));
+                },
+                child: const Text("Second Page")),
           ],
         ),
       ),
