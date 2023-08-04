@@ -6,14 +6,15 @@ class SecondPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final name = ModalRoute.of(context)!.settings.arguments;
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Second Page"),
+        title: Text("Hello, $name"),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
       body: TextButton(
           onPressed: () {
-            Navigator.of(context).pop();
+            Navigator.of(context).pop("This is data from the second screen");
           },
           child: const Text("Back")),
     );

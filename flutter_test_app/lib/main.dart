@@ -34,7 +34,13 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      routes: {
+        "/": (context) => const MyHomePage(
+              title: "Flutter Demo",
+            ),
+        "/first-page": (context) => const FirstPage(),
+        "/second-page": (context) => const SecondPage(),
+      },
     );
   }
 }
@@ -148,7 +154,7 @@ class _MyHomePageState extends State<MyHomePage> {
             TextButton(
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const FirstPage()));
+                      builder: (context) => const FirstPage(name: "Sam")));
                 },
                 child: const Text("First Page")),
             TextButton(
@@ -157,6 +163,14 @@ class _MyHomePageState extends State<MyHomePage> {
                       context,
                       MaterialPageRoute(
                           builder: (context) => const SecondPage()));
+                },
+                child: const Text("Second Page")),
+            TextButton(
+                onPressed: () async {
+                  final response = await Navigator.pushNamed(
+                      context, "/second-page",
+                      arguments: "Sam2");
+                  print(response);
                 },
                 child: const Text("Second Page")),
           ],
